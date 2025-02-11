@@ -1,0 +1,239 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:pro="http://www.liquibase.org/xml/ns/pro" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibase-pro-latest.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+    <changeSet author="root (generated)" id="1739259710083-1">
+        <createTable tableName="barrier_free_spot">
+            <column name="facility_name" type="VARCHAR(50)">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="branch_name" type="VARCHAR(50)">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="category1" type="VARCHAR(50)"/>
+            <column name="category2" type="VARCHAR(50)"/>
+            <column name="category3" type="VARCHAR(50)"/>
+            <column name="province" type="VARCHAR(50)"/>
+            <column name="city_district" type="VARCHAR(50)"/>
+            <column name="township" type="VARCHAR(50)"/>
+            <column name="li_name" type="VARCHAR(50)"/>
+            <column name="building_number" type="VARCHAR(50)"/>
+            <column name="street_name" type="VARCHAR(50)"/>
+            <column name="building_code" type="VARCHAR(50)"/>
+            <column name="latitude" type="DOUBLE">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="longitude" type="DOUBLE">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="postal_code" type="DOUBLE"/>
+            <column name="road_address" type="VARCHAR(50)"/>
+            <column name="land_lot_address" type="VARCHAR(50)"/>
+            <column name="phone_number" type="VARCHAR(50)"/>
+            <column name="homepage" type="TEXT"/>
+            <column name="blog_address" type="TEXT"/>
+            <column name="facebook_address" type="TEXT"/>
+            <column name="instagram_address" type="TEXT"/>
+            <column name="holiday" type="TEXT"/>
+            <column name="operating_hours" type="TEXT"/>
+            <column name="free_parking" type="VARCHAR(50)"/>
+            <column name="paid_parking" type="VARCHAR(50)"/>
+            <column name="admission_fee" type="VARCHAR(50)"/>
+            <column name="disabled_access_door" type="VARCHAR(50)"/>
+            <column name="wheelchair_rental" type="VARCHAR(50)"/>
+            <column name="disabled_toilet" type="VARCHAR(50)"/>
+            <column name="disabled_parking" type="VARCHAR(50)"/>
+            <column name="large_parking_allowed" type="VARCHAR(50)"/>
+            <column name="guide_dog_allowed" type="VARCHAR(50)"/>
+            <column name="braille_guide" type="VARCHAR(50)"/>
+            <column name="audio_guide_korean" type="VARCHAR(50)"/>
+            <column name="last_update" type="VARCHAR(50)"/>
+            <column defaultValueNumeric="0" name="total_prefer" type="INT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="root (generated)" id="1739259710083-2">
+        <createTable tableName="club">
+            <column name="item_nm" type="VARCHAR(50)"/>
+            <column name="ctprvn_nm" type="VARCHAR(50)"/>
+            <column name="signgu_nm" type="VARCHAR(50)"/>
+            <column name="nm" type="VARCHAR(256)">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="trobl_ty_nm" type="VARCHAR(50)"/>
+            <column name="oper_time_cn" type="VARCHAR(50)">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="intrcn_cn" type="TEXT"/>
+            <column defaultValueNumeric="0" name="total_prefer" type="INT"/>
+            <column name="host_index" type="INT"/>
+            <column name="host_id" type="VARCHAR(256)"/>
+            <column defaultValueComputed="CURRENT_TIMESTAMP" name="create_date" type="timestamp"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="root (generated)" id="1739259710083-3">
+        <createTable tableName="ftness_mesure_data">
+            <column name="mesure_tme" type="INT"/>
+            <column name="cnter_nm" type="VARCHAR(50)"/>
+            <column name="age_flag_nm" type="VARCHAR(50)"/>
+            <column name="mesure_place_flag_nm" type="VARCHAR(50)"/>
+            <column name="mesure_age_co" type="INT"/>
+            <column name="mesure_de" type="INT"/>
+            <column name="sexdstn_flag_cd" type="VARCHAR(50)"/>
+            <column name="trobl_ty_nm" type="VARCHAR(50)"/>
+            <column name="trobl_detail_nm" type="VARCHAR(50)"/>
+            <column name="trobl_grad_nm" type="VARCHAR(50)"/>
+            <column name="exercise_stage" type="VARCHAR(50)"/>
+            <column name="exercise_name" type="VARCHAR(50)">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column autoIncrement="true" name="ftness_mesure_index" type="INT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column defaultValueNumeric="0" name="total_prefer" type="INT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="root (generated)" id="1739259710083-4">
+        <createTable tableName="join_club">
+            <column autoIncrement="true" name="join_club_index" type="INT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="user_index" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="user_id" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="club_nm" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="club_time" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueComputed="CURRENT_TIMESTAMP" name="update_date" type="timestamp"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="root (generated)" id="1739259710083-5">
+        <createTable tableName="like_club">
+            <column autoIncrement="true" name="like_club_index" type="INT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="user_index" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="user_id" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="club_nm" type="VARCHAR(100)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="club_time" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueBoolean="false" name="like_yn" type="BIT(1)"/>
+            <column defaultValueComputed="CURRENT_TIMESTAMP" name="update_date" type="datetime"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="root (generated)" id="1739259710083-6">
+        <createTable tableName="reco_barrier_free_spot">
+            <column autoIncrement="true" name="reco_barrier_free_spot_index" type="INT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="user_index" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="user_id" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="facility_name" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="branch_name" type="VARCHAR(255)"/>
+            <column name="latitude" type="DOUBLE">
+                <constraints nullable="false"/>
+            </column>
+            <column name="longitude" type="DOUBLE">
+                <constraints nullable="false"/>
+            </column>
+            <column name="reason" type="TEXT"/>
+            <column defaultValueBoolean="false" name="like_yn" type="BIT(1)"/>
+            <column defaultValueComputed="CURRENT_TIMESTAMP" name="update_date" type="timestamp"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="root (generated)" id="1739259710083-7">
+        <createTable tableName="reco_ftness">
+            <column autoIncrement="true" name="reco_ftness_index" type="INT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="user_index" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="user_id" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="ftness_mesure_index" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="exercise_name" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="reason" type="TEXT"/>
+            <column name="like_yn" type="BIT(1)"/>
+            <column defaultValueComputed="CURRENT_TIMESTAMP" name="update_date" type="timestamp"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="root (generated)" id="1739259710083-8">
+        <createTable tableName="refresh">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="username" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="refresh" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="expiration" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="root (generated)" id="1739259710083-9">
+        <createTable tableName="user">
+            <column autoIncrement="true" name="user_index" type="INT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="id" type="VARCHAR(255)">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="password" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="email" type="VARCHAR(255)">
+                <constraints nullable="false" unique="true"/>
+            </column>
+            <column name="birthday" type="timestamp"/>
+            <column name="name" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="age" type="INT"/>
+            <column defaultValue="0" name="age_floor" type="VARCHAR(15)"/>
+            <column name="gender" type="VARCHAR(50)"/>
+            <column name="disability" type="VARCHAR(50)"/>
+            <column name="disability_detail" type="TEXT"/>
+            <column name="disability_rank" type="VARCHAR(50)"/>
+            <column name="exercise_experience" type="VARCHAR(255)"/>
+            <column name="exercise_purpose" type="VARCHAR(255)"/>
+            <column defaultValueComputed="CURRENT_TIMESTAMP" name="create_date" type="timestamp"/>
+            <column defaultValueComputed="CURRENT_TIMESTAMP" name="update_date" type="timestamp"/>
+            <column defaultValue="USER" name="role" type="VARCHAR(100)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="root (generated)" id="1739259710083-10">
+        <createView fullDefinition="false" remarks="VIEW" viewName="like_summary">select `my_database`.`like_club`.`club_nm` AS `club_nm`,`my_database`.`like_club`.`club_time` AS `club_time`,sum(`my_database`.`like_club`.`like_yn`) AS `total_likes` from `my_database`.`like_club` group by `my_database`.`like_club`.`club_nm`,`my_database`.`like_club`.`club_time`</createView>
+    </changeSet>
+    <changeSet author="root (generated)" id="1739259710083-11">
+        <createView fullDefinition="false" remarks="VIEW" viewName="view_barrier_free_spot_for_model">select `u`.`user_index` AS `user_index`,`u`.`id` AS `id`,`u`.`disability` AS `disability`,`u`.`disability_rank` AS `disability_rank`,`bfs`.`facility_name` AS `facility_name`,`bfs`.`branch_name` AS `branch_name`,`bfs`.`latitude` AS `latitude`,`bfs`.`longitude` AS `longitude`,`lcs`.`like_yn` AS `like_yn`,`bfs`.`category1` AS `category1`,`bfs`.`category2` AS `category2`,`bfs`.`free_parking` AS `free_parking`,`bfs`.`disabled_access_door` AS `disabled_access_door`,`bfs`.`disabled_toilet` AS `disabled_toilet`,`bfs`.`large_parking_allowed` AS `large_parking_allowed`,`bfs`.`total_prefer` AS `total_prefer` from ((`my_database`.`user` `u` join `my_database`.`like_club` `lcs` on((`u`.`user_index` = `lcs`.`user_index`))) join `my_database`.`barrier_free_spot` `bfs` on(((`lcs`.`club_nm` = `bfs`.`facility_name`) and (`lcs`.`club_time` = `bfs`.`branch_name`))))</createView>
+    </changeSet>
+</databaseChangeLog>
