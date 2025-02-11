@@ -7,7 +7,7 @@ pipeline {
         CHANGELOG_FILE = "db/db.changelog-master.xml"
         ROLLBACK = false
     }
-    parameters { // rollback 버튼 추가하기기
+    parameters { // rollback 버튼 추가하기
         booleanParam(name: 'ROLLBACK', defaultValue: false, description: 'Rollback the last change?')
     }
 
@@ -30,9 +30,9 @@ pipeline {
         stage('Apply Liquibase') {
             steps {
                 script {
-                    sh 'ssh -o StrictHostKeyChecking=no root@192.168.0.13'
                     if(params.ROLLBACK){
-                        sh '''
+                        sh """
+                        ssh -o StrictHostKeyChecking=no root@192.168.0.13 '
                         echo "liquibase rollback start..."
                         liquibase \
                           --changeLogFile=db/db.changelog-master.xml \
@@ -41,10 +41,11 @@ pipeline {
                           --password="${DB_PASSWORD}" \
                           --driver="com.mysql.cj.jdbc.Driver" \
                           rollbackCount 1
-                        
-                        '''
+                        '
+                        """
                     }else{
-                        sh '''
+                        sh """
+                        ssh -o StrictHostKeyChecking=no root@192.168.0.13 '
                         echo "liquibase update start..."
                         liquibase \
                           --changeLogFile=db/db.changelog-master.xml \
@@ -53,7 +54,8 @@ pipeline {
                           --password="${DB_PASSWORD}" \
                           --driver="com.mysql.cj.jdbc.Driver" \
                           update
-                        '''
+                        '
+                        """
                     }
                 }
             }
