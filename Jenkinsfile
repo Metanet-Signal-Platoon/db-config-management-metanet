@@ -34,6 +34,7 @@ pipeline {
                         sh """
                         ssh -o StrictHostKeyChecking=no root@192.168.0.13 '
                         echo "liquibase rollback start..."
+                        cd /home/user/legacy/b-config-management-metanet_main
                         liquibase rollbackCount 1
                         '
                         """
@@ -41,6 +42,7 @@ pipeline {
                         sh """
                         ssh -o StrictHostKeyChecking=no root@192.168.0.13 '
                         echo "liquibase update start..."
+                        cd cd /home/user/legacy/b-config-management-metanet_main
                         liquibase update
                         '
                         """
