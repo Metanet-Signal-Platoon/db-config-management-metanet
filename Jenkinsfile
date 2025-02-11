@@ -7,7 +7,7 @@ pipeline {
         CHANGELOG_FILE = "db/db.changelog-master.xml"
         ROLLBACK = false
     }
-    parameters { // rollback 버튼 추가하기
+    parameters { // jenkins rollback 버튼 추가하기
         booleanParam(name: 'ROLLBACK', defaultValue: false, description: 'Rollback the last change?')
     }
 
@@ -34,26 +34,14 @@ pipeline {
                         sh """
                         ssh -o StrictHostKeyChecking=no root@192.168.0.13 '
                         echo "liquibase rollback start..."
-                        liquibase \
-                          --changeLogFile=db/db.changelog-master.xml \
-                          --url="${DB_URL}" \
-                          --username="${DB_USERNAME}" \
-                          --password="${DB_PASSWORD}" \
-                          --driver="com.mysql.cj.jdbc.Driver" \
-                          rollbackCount 1
+                        liquibase rollbackCount 1
                         '
                         """
                     }else{
                         sh """
                         ssh -o StrictHostKeyChecking=no root@192.168.0.13 '
                         echo "liquibase update start..."
-                        liquibase \
-                          --changeLogFile=db/db.changelog-master.xml \
-                          --url="${DB_URL}" \
-                          --username="${DB_USERNAME}" \
-                          --password="${DB_PASSWORD}" \
-                          --driver="com.mysql.cj.jdbc.Driver" \
-                          update
+                        liquibase update
                         '
                         """
                     }
