@@ -28,24 +28,24 @@ pipeline {
 
         //liquibase 적용
         stage('Apply Liquibase') {
-            steps {
-                script {
-                    if(params.ROLLBACK){
-                        sh """
-                        ssh -o StrictHostKeyChecking=no root@192.168.0.13 '
-                        echo "liquibase rollback start..."
-                        cd /home/user/legacy/b-config-management-metanet_main
-                        liquibase rollbackCount 1
-                        '
-                        """
-                    }else{
-                        sh """
-                        ssh -o StrictHostKeyChecking=no root@192.168.0.13 '
-                        echo "liquibase update start..."
-                        cd /home/user/legacy/b-config-management-metanet_main
-                        liquibase update
-                        '
-                        """
+        steps {
+            script {
+                if (params.ROLLBACK) {
+                    sh """
+                    ssh -o StrictHostKeyChecking=no root@192.168.0.13 << 'EOF'
+                    echo "Liquibase rollback start..."
+                    cd "/home/user/legacy/b-config-management-metanet_main" || exit 1
+                    liquibase --defaults-file=liquibase.properties rollbackCount 1
+                    EOF
+                    """
+                } else {
+                    sh """
+                    ssh -o StrictHostKeyChecking=no root@192.168.0.13 << 'EOF'
+                    echo "Liquibase update start..."
+                    cd "/home/user/legacy/b-config-management-metanet_main" || exit 1
+                    liquibase --defaults-file=liquibase.properties update
+                    EOF
+                    """
                     }
                 }
             }
