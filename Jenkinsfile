@@ -32,19 +32,21 @@ pipeline {
             script {
                 if (params.ROLLBACK) {
                     sh """
-                    ssh -o StrictHostKeyChecking=no root@192.168.0.13 << 'EOF'
+                    ssh -o StrictHostKeyChecking=no root@192.168.0.13 '
                     echo "Liquibase rollback start..."
-                    cd "/home/user/legacy/b-config-management-metanet_main" || exit 1
-                    liquibase --defaults-file=liquibase.properties rollbackCount 1
-                    EOF
+                    cd /home/user/legacy/b-config-management-metanet_main
+                    liquibase rollbackCount 1
+                    
+                    '
                     """
                 } else {
                     sh """
-                    ssh -o StrictHostKeyChecking=no root@192.168.0.13 << 'EOF'
+                    ssh -o StrictHostKeyChecking=no root@192.168.0.13 '
                     echo "Liquibase update start..."
-                    cd "/home/user/legacy/b-config-management-metanet_main" || exit 1
-                    liquibase --defaults-file=liquibase.properties update
-                    EOF
+                    cd /home/user/legacy/b-config-management-metanet_main
+                    liquibase update
+                    
+                    '
                     """
                     }
                 }
