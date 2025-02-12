@@ -20,5 +20,7 @@
     <!-- user 테이블 새로운 컬럼 추가-->
     <include file="db/user/db.changelog-user-add-column.xml" />
 
+    <!-- user 테이블 새로운 컬럼(power) 추가-->
+    <include file="db/user/db.changelog-user-add-column2.xml" />
     <!-- keep going -->
 </databaseChangeLog>
