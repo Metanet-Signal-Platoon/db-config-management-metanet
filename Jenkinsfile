@@ -31,23 +31,21 @@ pipeline {
         steps {
             script {
                 if (params.ROLLBACK) {
-                    sh """
-                    ssh -o StrictHostKeyChecking=no root@192.168.0.13 '
+                    sh '''
+                    
                     echo "Liquibase rollback start..."
                     cd /home/user/legacy/b-config-management-metanet_main
                     liquibase rollbackCount 1
                     
-                    '
-                    """
+                    
+                    '''
                 } else {
-                    sh """
-                    ssh -o StrictHostKeyChecking=no root@192.168.0.13 '
+                    sh '''
                     echo "Liquibase update start..."
                     cd /home/user/legacy/b-config-management-metanet_main
                     liquibase update
-                    
-                    '
-                    """
+            
+                    '''
                     }
                 }
             }
