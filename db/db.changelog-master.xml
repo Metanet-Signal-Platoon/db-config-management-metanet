@@ -6,6 +6,6 @@
         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.3.xsd">
 
     <!-- Baseline (기준 DB 상태) -->
-    <include file="db/db.baseline-20250215.xml" />
+    <!-- <include file="db/db.baseline-20250215.xml" /> -->
 
 </databaseChangeLog>
