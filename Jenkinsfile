@@ -31,11 +31,13 @@ pipeline {
                 if (params.ROLLBACK) {
                     sh '''
                     echo "Liquibase rollback start..."
+                    cd /var/jenkins_home/workspace/b-config-management-metanet_main
                     liquibase --classpath=/var/jenkins_home/workspace/b-config-management-metanet_main/mysql-connector-java-8.0.18.jar rollbackCount 1
                     '''
                 } else {
                     sh '''
                     echo "Liquibase update start..."
+                    cd /var/jenkins_home/workspace/b-config-management-metanet_main
                     liquibase --classpath=/var/jenkins_home/workspace/b-config-management-metanet_main/mysql-connector-java-8.0.18.jar update
                     '''
                     }
