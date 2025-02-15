@@ -1,0 +1,41 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:pro="http://www.liquibase.org/xml/ns/pro" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibase-pro-latest.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+    <changeSet author="root (generated)" id="1739608662438-1">
+        <createTable tableName="quiz">
+            <column name="id" type="BIGINT"/>
+            <column autoIncrement="true" name="quiz_id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="answer" type="VARCHAR(255)"/>
+            <column name="category" type="VARCHAR(255)"/>
+            <column name="explanation" type="VARCHAR(255)"/>
+            <column name="option1" type="VARCHAR(255)"/>
+            <column name="option2" type="VARCHAR(255)"/>
+            <column name="option3" type="VARCHAR(255)"/>
+            <column name="option4" type="VARCHAR(255)"/>
+            <column name="question" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="root (generated)" id="1739608662438-2">
+        <createTable tableName="real_estate">
+            <column autoIncrement="true" name="id" type="INT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="price" remarks="부동산 가격" type="DECIMAL(10, 2)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="additionalInfo" remarks="부동산 부가정보" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="location" remarks="부동산 위치" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="brokerName" remarks="공인중개사 이름" type="VARCHAR(100)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="phoneNumber" remarks="전화번호" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+</databaseChangeLog>

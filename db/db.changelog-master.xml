@@ -5,8 +5,8 @@
     xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.3.xsd">
 
-    <!-- Baseline (기존 DB 상태) -->
-    <!-- <include file="db/db.changelog-initial.xml" /> -->
+    <!-- Baseline (기준 DB 상태) -->
+    <include file="db/db.baseline-20250215.xml" />
     
     <!-- club 테이블에 테스트 컬럼 추가 -->
     <!-- <include file="db/club/db.changelog-club-add-column.xml" />
