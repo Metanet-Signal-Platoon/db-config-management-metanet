@@ -7,23 +7,5 @@
 
     <!-- Baseline (기준 DB 상태) -->
     <include file="db/db.baseline-20250215.xml" />
-    
-    <!-- club 테이블에 테스트 컬럼 추가 -->
-    <!-- <include file="db/club/db.changelog-club-add-column.xml" />
-    
-    <!-- board 테이블 새로 생성-->
-    <include file="db/board/db.changelog-board-create-table.xml" />
-
-    <!-- club 테이블 인덱스 생성-->
-    <include file="db/club/db.changelog-club-add-index.xml" />
-
-    <!-- user 테이블 새로운 컬럼 추가-->
-    <include file="db/user/db.changelog-user-add-column.xml" />
-
-    <!-- user 테이블 새로운 컬럼(power) 추가-->
-    <include file="db/user/db.changelog-user-add-column2.xml" />
-    <!-- keep going -->
-
-    <include file="db/board/db.changelog-board-add-column.xml" /> -->
 
 </databaseChangeLog>
