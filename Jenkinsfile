@@ -34,7 +34,6 @@ pipeline {
                     sh '''
                     
                     echo "Liquibase rollback start..."
-                    cd /home/user/legacy/b-config-management-metanet_main
                     liquibase rollbackCount 1
                     
                     
@@ -42,7 +41,6 @@ pipeline {
                 } else {
                     sh '''
                     echo "Liquibase update start..."
-                    cd /home/user/legacy/b-config-management-metanet_main
                     liquibase update
             
                     '''
